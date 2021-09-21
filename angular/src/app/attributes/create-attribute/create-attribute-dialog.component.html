@@ -1,0 +1,63 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createAttributeForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'CreateNewAttribute' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+    <div class="modal-body">
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="attributeName">
+          {{ "Attribute Name" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="text"
+            class="form-control"
+            name="attributeName"
+            id="attributeName"
+            minlength="2"
+            maxlength="64"
+            required
+            [(ngModel)]="attribute.attributeName"
+            #attributeNameModel="ngModel"
+            #attributeNameEl
+          />
+          <abp-validation-summary
+            [control]="attributeNameModel"
+            [controlEl]="attributeNameEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+      <div class="form-group row required">
+        <label class="col-md-3 col-form-label" for="attributeDescription">
+          {{ "Description" | localize }}
+        </label>
+        <div class="col-md-9">
+          <input
+            type="text"
+            class="form-control"
+            name="attributeDescription"
+            id="attributeDescription"
+            maxlength="128"
+            required
+            [(ngModel)]="attribute.attributeDescription"
+            #attributeDescriptionModel="ngModel"
+            #attributeDescriptionEl
+          />
+          <abp-validation-summary
+            [control]="attributeDescriptionModel"
+            [controlEl]="attributeDescriptionEl"
+          ></abp-validation-summary>
+        </div>
+      </div>
+    </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createAttributeForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

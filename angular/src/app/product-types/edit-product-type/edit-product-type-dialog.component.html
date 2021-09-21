@@ -1,0 +1,63 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #editProductTypeForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'EditProductType' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="productTypeName">
+        {{ "ProductType Name" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="productTypeName"
+          id="productTypeName"
+          minlength="2"
+          maxlength="64"
+          required
+          [(ngModel)]="productType.productTypeName"
+          #productTypeNameModel="ngModel"
+          #productTypeNameEl
+        />
+        <abp-validation-summary
+          [control]="productTypeNameModel"
+          [controlEl]="productTypeNameEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="productTypeDescription">
+        {{ "Description" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="productTypeDescription"
+          id="productTypeDescription"
+          maxlength="128"
+          required
+          [(ngModel)]="productType.productTypeDescription"
+          #valueDescriptionModel="ngModel"
+          #valueDescriptionEl
+        />
+        <abp-validation-summary
+          [control]="valueDescriptionModel"
+          [controlEl]="valueDescriptionEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!editProductTypeForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

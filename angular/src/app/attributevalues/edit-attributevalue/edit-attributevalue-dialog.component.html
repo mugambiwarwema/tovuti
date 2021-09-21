@@ -1,0 +1,88 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #editAttributeValueForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'EditAttributeValue' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="attributeId">
+        {{ "Attribute" | localize }}
+      </label>
+      <div class="col-md-9">
+        <select
+          class="form-control"
+          name="attributeId"
+          id="attributeId"
+          maxlength="128"
+          required
+          [(ngModel)]="attributevalue.attributeId"
+          #attributeIdModel="ngModel"
+          #attributeIdEl
+        >
+        <option *ngFor="let s of attributes" [value]="s.id">{{s.attributeName}}</option>
+      </select>
+        <abp-validation-summary
+          [control]="attributeIdModel"
+          [controlEl]="attributeIdEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="valueName">
+        {{ "Value Name" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="valueName"
+          id="valueName"
+          minlength="2"
+          maxlength="64"
+          required
+          [(ngModel)]="attributevalue.valueName"
+          #valueNameModel="ngModel"
+          #valueNameEl
+        />
+        <abp-validation-summary
+          [control]="valueNameModel"
+          [controlEl]="valueNameEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+    
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="valueDescription">
+        {{ "Description" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="valueDescription"
+          id="valueDescription"
+          maxlength="128"
+          required
+          [(ngModel)]="attributevalue.valueDescription"
+          #valueDescriptionModel="ngModel"
+          #valueDescriptionEl
+        />
+        <abp-validation-summary
+          [control]="valueDescriptionModel"
+          [controlEl]="valueDescriptionEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+  </div>
+<abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!editAttributeValueForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

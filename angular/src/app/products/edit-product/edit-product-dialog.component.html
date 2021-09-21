@@ -1,0 +1,114 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #editProductForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'EditProduct' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="productTypeId">
+        {{ "TypeofProduct" | localize }}
+      </label>
+      <div class="col-md-9">
+        <select
+          class="form-control"
+          name="productTypeId"
+          id="productTypeId"
+          maxlength="128"
+          required
+          [(ngModel)]="product.productTypeId"
+          #productTypeIdModel="ngModel"
+          #productTypeIdEl
+        >
+        <option *ngFor="let s of productTypes" [value]="s.id">{{s.productTypeName}}</option>
+      </select>
+        <abp-validation-summary
+          [control]="productTypeIdModel"
+          [controlEl]="productTypeIdEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="productName">
+        {{ "Product Name" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="productName"
+          id="productName"
+          minlength="2"
+          maxlength="64"
+          required
+          [(ngModel)]="product.productName"
+          #productNameModel="ngModel"
+          #productNameEl
+        />
+        <abp-validation-summary
+          [control]="productNameModel"
+          [controlEl]="productNameEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="price">
+        {{ "Price" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="number"
+          class="form-control"
+          name="price"
+          id="price"
+          required
+          [(ngModel)]="product.price"
+          #priceModel="ngModel"
+          #priceEl
+        />
+        <abp-validation-summary
+          [control]="priceModel"
+          [controlEl]="priceEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="productDescription">
+        {{ "Description" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="productDescription"
+          id="productDescription"
+          maxlength="128"
+          required
+          [(ngModel)]="product.productDescription"
+          #productDescriptionModel="ngModel"
+          #productDescriptionEl
+        />
+        <abp-validation-summary
+          [control]="productDescriptionModel"
+          [controlEl]="productDescriptionEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+  </div>
+
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!editProductForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>
