@@ -2,21 +2,22 @@
 Tovuti - How to run
 
 1. Create a postgresql database with these details
-- username: tovuti_User
-- database name: tovuti_Db
-- password: tovuti_Password
-- port: 5432
-- host: localhost 
-1. Run migrations against the tovuti.EntityFrameworkCore dir 
+> username: tovuti_User
+> database name: tovuti_Db
+> password: tovuti_Password
+> port: 5432
+> host: localhost 
 
-$ dotnet ef database update
+2. Run migrations against the tovuti.EntityFrameworkCore dir 
 
-2. Run the server against tovuti.Web.Host dir
-$ dotnet run
+> dotnet ef database update
 
-3. Run the angular app from tovuti\angular dir
-$ npm install
-$ npm run
+3. Run the server against tovuti.Web.Host dir
+> dotnet run
+
+4. Run the angular app from tovuti\angular dir
+> npm install
+> npm run
 # License
 
 [MIT](LICENSE).
