@@ -17,7 +17,14 @@ Tovuti - How to run
 
 4. Run the angular app from tovuti\angular dir
 > npm install
+
 > npm run
+
+5. Frontend and API login credentials:'
+> username: admin
+
+>password: 
+
 # License
 
 [MIT](LICENSE).
