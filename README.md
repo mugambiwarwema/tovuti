@@ -3,9 +3,13 @@ Tovuti - How to run
 
 1. Create a postgresql database with these details
 > username: tovuti_User
+
 > database name: tovuti_Db
+
 > password: tovuti_Password
+
 > port: 5432
+
 > host: localhost 
 
 2. Run migrations against the tovuti.EntityFrameworkCore dir 
