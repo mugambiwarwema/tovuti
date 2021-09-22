@@ -23,7 +23,7 @@ Tovuti - How to run
 5. Frontend and API login credentials:'
 > username: admin
 
->password: 
+>password: 123qwe
 
 # License
 
